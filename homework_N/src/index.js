@@ -12,9 +12,9 @@
 
  Другими словами: функция должна возвращать в неизменном виде то, что поступает ей на вход
  */
-function returnFirstArgument() {
+function returnFirstArgument(a) {
+  return a;
 }
-
 /*
  Задание 2:
 
@@ -29,8 +29,13 @@ function returnFirstArgument() {
  Пример:
    sumWithDefaults(10) вернет 110
  */
-function sumWithDefaults(a, b) {
+
+function sumWithDefaults(a, b = 100) {
+  return a + b;
 }
+
+ // Значение по умолчанию для второго аргумента  100
+
 
 /*
  Задание 3:
@@ -40,8 +45,17 @@ function sumWithDefaults(a, b) {
  Пример:
    returnFnResult(() => 'привет') вернет 'привет'
  */
+
 function returnFnResult(fn) {
+  function subFunction() {
+        var a = "привет";
+        return a;
+  }
+  return subFunction();
 }
+
+var result = returnFnResult();
+alert(result);
 
 /*
  Задание 4:
@@ -56,17 +70,24 @@ function returnFnResult(fn) {
    console.log(f()); // выведет 12
    console.log(f()); // выведет 13
  */
-function returnCounter(number) {
+function returnCounter(number =0) {
+  let result = number;
+
+  function fn() {
+    return ++result;
+  }
+  return fn;
 }
+
 
 /*
  Задание 5 *:
 
- Функция должна возвращать все переданные ей аргументы в виде массива
- Количество переданных аргументов заранее неизвестно
+Функция должна возвращать все переданные ей аргументы в виде массива
+Количество переданных аргументов заранее неизвестно
 
- Пример:
-   returnArgumentsArray(1, 2, 3) вернет [1, 2, 3]
+Пример:
+returnArgumentsArray(1, 2, 3) вернет [1, 2, 3]
  */
 function returnArgumentsArray() {
 }
@@ -74,10 +95,10 @@ function returnArgumentsArray() {
 /*
  Задание 6 *:
 
- Функция должна принимать другую функцию (F) и некоторое количество дополнительных аргументов
- Функция должна привязать переданные аргументы к функции F и вернуть получившуюся функцию
+Функция должна принимать другую функцию (F) и некоторое количество дополнительных аргументов
+Функция должна привязать переданные аргументы к функции F и вернуть получившуюся функцию
 
- Пример:
+Пример:
    function sum(a, b) {
      return a + b;
    }
